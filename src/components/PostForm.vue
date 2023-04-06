@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'posts'
+    name: 'post-form'
 }
 </script>
 <style lang="">
