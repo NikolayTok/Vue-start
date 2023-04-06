@@ -1,33 +1,37 @@
 <template>
-  <div class="content">
-    <div>Likes count {{ likes }}</div>
-    <button @click="addLikes">like</button>
-    <button @click="addDisLikes">dislike</button>
-  </div>
-</template>
+  <post-form @create="createPost"/>
+  <post-list :posts="posts"/>
+</template>   
 
 <script>
+
+import PostForm from './components/PostForm.vue';
+import PostList from './components/PostList.vue';
+
 export default {
+  components: {
+    PostForm, PostList
+  },
   data() {
     return {
-      likes: 0
+      posts: [
+        { id: 1, title: 'post title 1', body: 'post description 1' },
+        { id: 2, title: 'post title 2', body: 'post description 2' },
+        { id: 3, title: 'post title 3', body: 'post description 3' }
+      ],
     }
   },
   methods: {
-    addLikes(){
-      this.likes += 1
-    },
-    addDisLikes(){
-      this.likes -= 1
+    createPost(post){
+      this.posts.push(post)
     }
   }
 }
 </script>
 
 <style scoped>
-.content{
-  display: flex;
-  flex-direction: column;
-
+.btn{
+  background-color: transparent;
+  border-color: #4dbd4d;
 }
 </style>
